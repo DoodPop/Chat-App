@@ -10,6 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/jquery": "^3.5.30"
+    "@types/jquery": "^3.5.30",
+    "@types/node": "^20.12.12"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
   }
 }
