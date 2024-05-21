@@ -19,4 +19,13 @@ function refreshInput() {
     });
 }
 refreshInput();
+function fetchUserProfile(token) {
+    fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token)
+        .then(response => response.json())
+        .then(data => {
+        console.log('User Profile:', data);
+        document.body.innerHTML = `<h1>Hello, ${data.name}</h1><p>Email: ${data.email}</p><img src="${data.picture}" alt="Profile Picture">`;
+    })
+        .catch(error => console.error('Error fetching user profile:', error));
+}
 //# sourceMappingURL=back.js.map
