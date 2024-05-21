@@ -42,31 +42,28 @@ font-weight: bolder;
     background-color:  rgb(29, 29, 43);
     color: white;
 }
-.g-signin2{
+.bn {
     margin-top: 2rem;
-
-    padding: 14px 30px; 
-
-
-}
-
-.abcRioButtonContentWrapper{
-    background-color: bisque;
-    color: black;
-
-    border: none; 
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .bn:hover {
+    background-color: #0056b3; 
+    transform: scale(1.05); 
+  }
   
 
-    cursor: pointer; 
 
 
-transition: background-color 0.3s ease;
-}
-.abcRioButtonContentWrapper:hover{
-    background-color:  rgb(29, 29, 43);
-    color: white;
- 
-}
 .data{
     display: none;
 }
