@@ -32,7 +32,6 @@ function oauthSignIn() {
   document.body.appendChild(form);
   form.submit();
 }
-
 function fetchGoogleUserProfile(accessToken) {
   fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
       headers: {

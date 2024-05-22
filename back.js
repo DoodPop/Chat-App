@@ -37,3 +37,4 @@ function displayUserInformation() {
     }
 }
 displayUserInformation();
+window.onload = displayUserInformation;
