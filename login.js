@@ -28,30 +28,6 @@ function oauthSignIn() {
     document.body.appendChild(form);
     form.submit();
 }
-function fetchGoogleUserProfile(accessToken) {
-    fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-        headers: {
-            'Authorization': "Bearer ".concat(accessToken)
-        }
-    })
-        .then(function (response) { return response.json(); })
-        .then(function (data) {
-        displayUserProfile(data);
-    })
-        .catch(function (error) {
-        console.error('Error fetching user profile:', error);
-    });
-}
 function displayUserProfile(userData) {
-    var imageElement = document.getElementById('image');
-    var nameElement = document.querySelector('.name');
-    var emailElement = document.getElementById('email');
-    imageElement.src = userData.picture;
-    nameElement.textContent = userData.name;
-    emailElement.textContent = userData.email;
-}
-function onSignIn(googleUser) {
-    var authResponse = googleUser.getAuthResponse();
-    var accessToken = authResponse.access_token;
-    fetchGoogleUserProfile(accessToken);
+    localStorage.setItem('userData', JSON.stringify(userData));
 }

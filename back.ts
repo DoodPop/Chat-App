@@ -27,3 +27,26 @@ refreshInput();
 
 
 
+
+
+  
+  function displayUserInformation() {
+    const userDataString = localStorage.getItem('userData');
+    if (userDataString) {
+        const userData = JSON.parse(userDataString);
+
+   
+        const imageElement = document.getElementById('image');
+        const nameElement = document.querySelector('.name');
+        const emailElement = document.getElementById('email');
+
+        imageElement.src = userData.picture;
+        nameElement.textContent = userData.name;
+        emailElement.textContent = userData.email;
+    } else {
+        console.error('User data not found.');
+    }
+}
+
+
+displayUserInformation();
