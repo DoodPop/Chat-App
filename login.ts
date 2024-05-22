@@ -33,11 +33,32 @@ function oauthSignIn() {
   form.submit();
 }
 
-
-function displayUserProfile(data) {
-
-  localStorage.setItem('userData', JSON.stringify(data));
+function fetchGoogleUserProfile(accessToken) {
+  fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+      headers: {
+          'Authorization': `Bearer ${accessToken}`
+      }
+  })
+  .then(response => response.json())
+  .then(data => {
+      // Store user data in local storage
+      localStorage.setItem('data', JSON.stringify(data));
+      console.log('Stored user data:', data); // Log the stored user data for verification
+      displayUserProfile(data);
+  })
+  .catch(error => {
+      console.error('Error fetching user profile:', error);
+  });
 }
 
+function displayUserProfile(data) {
+  // Optional: Display user profile on the login page
+  console.log('User profile data:', data);
+}
 
+function onSignIn(googleUser) {
+  const authResponse = googleUser.getAuthResponse();
+  const accessToken = authResponse.access_token;
 
+  fetchGoogleUserProfile(accessToken);
+}

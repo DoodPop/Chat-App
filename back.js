@@ -28,9 +28,9 @@ function displayUserInformation() {
         var imageElement = document.getElementById('image');
         var nameElement = document.querySelector('.name');
         var emailElement = document.getElementById('email');
-        imageElement.src = data.picture;
-        nameElement.textContent = data.name;
-        emailElement.textContent = data.email;
+        imageElement.src = userData.picture;
+        nameElement.textContent = userData.name;
+        emailElement.textContent = userData.email;
     }
     else {
         console.error('User data not found.');
