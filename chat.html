@@ -7,25 +7,39 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='Styles.css'>
 
+
 </head>
-<body>
+
     <title>Chat</title>
    
 
 <body>
-    <div class="container">
-        <div class="message">
-            Hello! How can I help you today?
-        </div>
+ 
+    <div  class="header-container">
+    <div   class="header-info"></div>
+</div>
+    <div  class="containerUI">
+    <div class="UI">
+        <img id="image" class="picture" width="90" height="90">
+        <H2 class="name"></H2>
+        <p id="email"></p>
+    </div>
+    </div>
+    <div class="concontainer">
+    <div class="container"></div>
+
     
     
     </div>
-    <form class="chat-form">
-        <input type="text" id="input" placeholder="Type your message...">
-        <button type="submit" id="submitt">Send</button>
+</div>
+
+   
+  <form class="chat-form">
+      <input class="chat" type="text" id="input" placeholder="Type your message...">
+      <button class="chatt" type="submit" id="submitt">Send</button>
     </form>
-    <div id="messageDiv" style="display: none;"></div>
         
     <script src="back.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>

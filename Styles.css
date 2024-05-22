@@ -9,10 +9,20 @@ body {
    
     background-color: rgb(29, 29, 43);
 }
+.concontainer{
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    position: relative;
+    overflow-y: auto;
+}
 .container {
     max-width: 600px;
     margin: 0 40px;
     padding: 20px;
+    margin-left: 6rem ;
+    position: relative;
+  
 }
 .message {
     background-color: #f2f2f2;
@@ -38,6 +48,7 @@ border-radius: 5px;
 color: white;
 margin-left: 10px;
 width: 400px;
+border: 1px solid  rgb(20, 29, 43);;
 }
 #submitt{
     border-radius: 5px;
@@ -48,7 +59,57 @@ width: 400px;
     padding: 10px;
     background-color: #007bff;
     border: none;
+
     border-radius: 0 5px 5px 0;
     color: #fff;
     cursor: pointer;
+}
+.UI{
+    border: solid 5px  rgb(38, 38, 51);
+
+    border-radius: 5px;
+    height: 100vh;
+    position:absolute;
+    width: 6rem;
+background-color: rgb(38, 38, 51);
+
+}
+.containerUI{
+    justify-content: center;
+    align-items: center;
+    width: 6rem;
+    position: fixed;
+    
+}
+.chat-form{
+    margin-left: 6rem;
+
+position: absolute;
+bottom: 0vh;
+    z-index: 99;
+}
+
+.header-container{
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+   
+  
+    
+}
+.header-info{
+    border: solid 3px rgb(26, 26, 34);
+    height: 3rem;
+  background-color: rgb(26, 26, 34);
+ 
+
+}
+
+.fixed {
+    position: fixed;
+   width: 100%;
+    z-index: 12000;
+}
+.picture{
+    border-radius: 10px;
 }
