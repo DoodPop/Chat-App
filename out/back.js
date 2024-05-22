@@ -48,16 +48,4 @@ function onSignIn(googleUser) {
     const accessToken = authResponse.access_token;
     fetchGoogleUserProfile(accessToken);
 }
-document.addEventListener("DOMContentLoaded", function () {
-    var header = document.querySelector('.header-container');
-    var tabOffset = header.offsetHeight;
-    window.addEventListener('scroll', function () {
-        if (window.pageYOffset >= tabOffset) {
-            header.classList.add('fixed');
-        }
-        else {
-            header.classList.remove('fixed');
-        }
-    });
-});
 //# sourceMappingURL=back.js.map
