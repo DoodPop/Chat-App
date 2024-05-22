@@ -28,29 +28,21 @@ function oauthSignIn() {
     document.body.appendChild(form);
     form.submit();
 }
-function fetchGoogleUserProfile(accessToken) {
-    fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-        headers: {
-            'Authorization': "Bearer ".concat(accessToken)
-        }
+function fetchUserProfile(token) {
+    console.log('Access Token:', token);
+    fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token)
+        .then(function (response) {
+        console.log('Response Status:', response.status);
+        return response.json();
     })
-        .then(function (response) { return response.json(); })
         .then(function (data) {
+        console.log('User Profile:', data);
         // Store user data in local storage
-        localStorage.setItem('data', JSON.stringify(data));
-        console.log('Stored user data:', data); // Log the stored user data for verification
-        displayUserProfile(data);
+        localStorage.setItem('userData', JSON.stringify(data));
+        // Redirect to chat page
+        window.location.href = 'chat.html';
     })
         .catch(function (error) {
         console.error('Error fetching user profile:', error);
     });
-}
-function displayUserProfile(data) {
-    // Optional: Display user profile on the login page
-    console.log('User profile data:', data);
-}
-function onSignIn(googleUser) {
-    var authResponse = googleUser.getAuthResponse();
-    var accessToken = authResponse.access_token;
-    fetchGoogleUserProfile(accessToken);
 }

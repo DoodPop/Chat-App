@@ -30,23 +30,24 @@ refreshInput();
 
 
 function displayUserInformation() {
-    const userDataString = localStorage.getItem('data');
+    const userDataString = localStorage.getItem('userData');
+    console.log('Retrieved userDataString from local storage:', userDataString);
+
     if (userDataString) {
         const userData = JSON.parse(userDataString);
+        console.log('Parsed userData:', userData);
 
         const imageElement = document.getElementById('image');
         const nameElement = document.querySelector('.name');
         const emailElement = document.getElementById('email');
 
-        imageElement.src = userData.picture; 
-        nameElement.textContent = userData.name; 
-        emailElement.textContent = userData.email; 
+        imageElement.src = userData.picture;
+        nameElement.textContent = userData.name;
+        emailElement.textContent = userData.email;
     } else {
-        console.error('User data not found.');
+        console.error('User data not found in local storage.');
     }
 }
 
-
-displayUserInformation();
 
 window.onload = displayUserInformation;

@@ -22,9 +22,11 @@ function refreshInput() {
 }
 refreshInput();
 function displayUserInformation() {
-    var userDataString = localStorage.getItem('data');
+    var userDataString = localStorage.getItem('userData');
+    console.log('Retrieved userDataString from local storage:', userDataString);
     if (userDataString) {
         var userData = JSON.parse(userDataString);
+        console.log('Parsed userData:', userData);
         var imageElement = document.getElementById('image');
         var nameElement = document.querySelector('.name');
         var emailElement = document.getElementById('email');
@@ -33,8 +35,7 @@ function displayUserInformation() {
         emailElement.textContent = userData.email;
     }
     else {
-        console.error('User data not found.');
+        console.error('User data not found in local storage.');
     }
 }
-displayUserInformation();
 window.onload = displayUserInformation;
