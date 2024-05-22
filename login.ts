@@ -34,9 +34,9 @@ function oauthSignIn() {
 }
 
 
-function displayUserProfile(userData) {
+function displayUserProfile(data) {
 
-  localStorage.setItem('userData', JSON.stringify(userData));
+  localStorage.setItem('userData', JSON.stringify(data));
 }
 
 

@@ -31,7 +31,7 @@ refreshInput();
 
   
   function displayUserInformation() {
-    const userDataString = localStorage.getItem('userData');
+    const userDataString = localStorage.getItem('data');
     if (userDataString) {
         const userData = JSON.parse(userDataString);
 
@@ -40,9 +40,9 @@ refreshInput();
         const nameElement = document.querySelector('.name');
         const emailElement = document.getElementById('email');
 
-        imageElement.src = userData.picture;
-        nameElement.textContent = userData.name;
-        emailElement.textContent = userData.email;
+        imageElement.src = data.picture;
+        nameElement.textContent = data.name;
+        emailElement.textContent = data.email;
     } else {
         console.error('User data not found.');
     }

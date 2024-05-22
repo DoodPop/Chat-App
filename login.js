@@ -28,6 +28,6 @@ function oauthSignIn() {
     document.body.appendChild(form);
     form.submit();
 }
-function displayUserProfile(userData) {
-    localStorage.setItem('userData', JSON.stringify(userData));
+function displayUserProfile(data) {
+    localStorage.setItem('userData', JSON.stringify(data));
 }

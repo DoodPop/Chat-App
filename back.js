@@ -22,15 +22,15 @@ function refreshInput() {
 }
 refreshInput();
 function displayUserInformation() {
-    var userDataString = localStorage.getItem('userData');
+    var userDataString = localStorage.getItem('data');
     if (userDataString) {
         var userData = JSON.parse(userDataString);
         var imageElement = document.getElementById('image');
         var nameElement = document.querySelector('.name');
         var emailElement = document.getElementById('email');
-        imageElement.src = userData.picture;
-        nameElement.textContent = userData.name;
-        emailElement.textContent = userData.email;
+        imageElement.src = data.picture;
+        nameElement.textContent = data.name;
+        emailElement.textContent = data.email;
     }
     else {
         console.error('User data not found.');
