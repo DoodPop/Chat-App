@@ -21,31 +21,4 @@ function refreshInput() {
     });
 }
 refreshInput();
-function fetchGoogleUserProfile(accessToken) {
-    fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-        headers: {
-            'Authorization': `Bearer ${accessToken}`
-        }
-    })
-        .then(response => response.json())
-        .then(data => {
-        displayUserProfile(data);
-    })
-        .catch(error => {
-        console.error('Error fetching user profile:', error);
-    });
-}
-function displayUserProfile(userData) {
-    const imageElement = document.getElementById('image');
-    const nameElement = document.querySelector('.name');
-    const emailElement = document.getElementById('email');
-    imageElement.src = userData.picture;
-    nameElement.textContent = userData.name;
-    emailElement.textContent = userData.email;
-}
-function onSignIn(googleUser) {
-    const authResponse = googleUser.getAuthResponse();
-    const accessToken = authResponse.access_token;
-    fetchGoogleUserProfile(accessToken);
-}
 //# sourceMappingURL=back.js.map

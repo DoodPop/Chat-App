@@ -28,17 +28,31 @@ function oauthSignIn() {
     document.body.appendChild(form);
     form.submit();
 }
-function handleOAuthResponse() {
-    var hash = window.location.hash.substr(1);
-    var result = hash.split('&').reduce(function (res, item) {
-        var parts = item.split('=');
-        res[parts[0]] = parts[1];
-        return res;
-    }, {});
-    if (result.access_token) {
-        var token = result.access_token;
-        fetchUserProfile(token);
-    }
+function fetchGoogleUserProfile(accessToken) {
+    fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+        displayUserProfile(data);
+    })
+        .catch(error => {
+        console.error('Error fetching user profile:', error);
+    });
 }
-window.onload = handleOAuthResponse;
+function displayUserProfile(userData) {
+    const imageElement = document.getElementById('image');
+    const nameElement = document.querySelector('.name');
+    const emailElement = document.getElementById('email');
+    imageElement.src = userData.picture;
+    nameElement.textContent = userData.name;
+    emailElement.textContent = userData.email;
+}
+function onSignIn(googleUser) {
+    const authResponse = googleUser.getAuthResponse();
+    const accessToken = authResponse.access_token;
+    fetchGoogleUserProfile(accessToken);
+}
 //# sourceMappingURL=login.js.map
