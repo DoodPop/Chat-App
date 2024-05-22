@@ -33,20 +33,8 @@ function oauthSignIn() {
   form.submit();
 }
 
-function handleOAuthResponse() {
-  var hash = window.location.hash.substr(1);
-  var result = hash.split('&').reduce(function (res, item) {
-    var parts = item.split('=');
-    res[parts[0]] = parts[1];
-    return res;
-  }, {});
-
-  if (result.access_token) {
-    var token = result.access_token;
-    fetchUserProfile(token);
-  }
-}
 
 
 
-window.onload = handleOAuthResponse;
+
+
