@@ -31,7 +31,7 @@ refreshInput();
 
 
 
-function displayUserInformation(userData) {
+function displayUserInformation() {
     const imageElement = document.getElementById('image');
     const nameElement = document.querySelector('.name');
     const emailElement = document.getElementById('email');
@@ -46,6 +46,4 @@ function displayUserInformation(userData) {
     }
 }
 
-
-
-window.onload = displayUserInformation;
+document.addEventListener('DOMContentLoaded', displayUserInformation);

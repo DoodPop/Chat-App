@@ -21,7 +21,7 @@ function refreshInput() {
     });
 }
 refreshInput();
-function displayUserInformation(userData) {
+function displayUserInformation() {
     var imageElement = document.getElementById('image');
     var nameElement = document.querySelector('.name');
     var emailElement = document.getElementById('email');
@@ -35,4 +35,4 @@ function displayUserInformation(userData) {
         console.error('User data not found.');
     }
 }
-window.onload = displayUserInformation;
+document.addEventListener('DOMContentLoaded', displayUserInformation);
