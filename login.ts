@@ -1,5 +1,7 @@
+// Function to initiate OAuth authentication
 function oauthSignIn() {
   var oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
+  var redirectURI = 'https://chat-app-tawny-seven.vercel.app/chat.html'; // Update with your actual redirect URI
 
   var form = document.createElement('form');
   form.setAttribute('method', 'GET');
@@ -7,7 +9,7 @@ function oauthSignIn() {
 
   var params = {
       'client_id': '3574196466-ck8gl2id3cv2dolhkrtnpdp1cbi5m4hq.apps.googleusercontent.com',
-      'redirect_uri': 'https://chat-app-tawny-seven.vercel.app/chat.html',
+      'redirect_uri': redirectURI,
       'response_type': 'token',
       'scope': 'profile email',
       'include_granted_scopes': 'true',
@@ -28,6 +30,7 @@ function oauthSignIn() {
   form.submit();
 }
 
+// Function to fetch user profile using access token
 function fetchUserProfile(token) {
   console.log('Access Token:', token);
 
@@ -46,4 +49,9 @@ function fetchUserProfile(token) {
       });
 }
 
-
+// Check if there's an access token in the URL (after successful OAuth authentication)
+var urlParams = new URLSearchParams(window.location.search);
+if (urlParams.has('access_token')) {
+  var accessToken = urlParams.get('access_token');
+  fetchUserProfile(accessToken);
+}
