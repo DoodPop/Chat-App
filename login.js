@@ -28,20 +28,3 @@ function oauthSignIn() {
     document.body.appendChild(form);
     form.submit();
 }
-function fetchUserProfile(token) {
-    // Log the token to ensure it's passed correctly
-    console.log('Access Token:', token);
-    fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token)
-        .then(function (response) {
-        // Log the response status to check if the request was successful
-        console.log('Response Status:', response.status);
-        return response.json();
-    })
-        .then(function (data) {
-        console.log('User Profile:', data);
-        document.body.innerHTML = "<h1>Hello, ".concat(data.name, "</h1><p>Email: ").concat(data.email, "</p><img src=\"").concat(data.picture, "\" alt=\"Profile Picture\">");
-    })
-        .catch(function (error) {
-        console.error('Error fetching user profile:', error);
-    });
-}
