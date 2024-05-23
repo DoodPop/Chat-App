@@ -41,13 +41,22 @@ function handleOAuthResponse() {
     }
 }
 function fetchUserProfile(token) {
-    fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token)
-        .then(function (response) { return response.json(); })
+    console.log('Access Token:', token);
+    fetch('https://www.googleapis.com/oauth2/v2/userinfo?alt=json&access_token=' + token)
+        .then(function (response) {
+        console.log('Response Status:', response.status);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
         .then(function (data) {
         console.log('User Profile:', data);
-        // Display user profile information on the page
-        document.body.innerHTML = "<h1>Hello, ".concat(data.name, "</h1><p>Email: ").concat(data.email, "</p><img src=\"").concat(data.picture, "\" alt=\"Profile Picture\">");
+        localStorage.setItem('userData', JSON.stringify(data));
+        window.location.href = 'chat.html';
     })
-        .catch(function (error) { return console.error('Error fetching user profile:', error); });
+        .catch(function (error) {
+        console.error('Error fetching user profile:', error);
+    });
 }
 window.onload = handleOAuthResponse;
