@@ -46,25 +46,17 @@ function handleOAuthResponse() {
     fetchUserProfile(token);
   }
 }
-function fetchUserProfile(token) {
-  console.log('Access Token:', token);
-  fetch('https://www.googleapis.com/oauth2/v2/userinfo?alt=json&access_token=' + token)
-      .then(function (response) {
-          console.log('Response Status:', response.status);
-          if (!response.ok) {
-              throw new Error('Network response was not ok');
-          }
-          return response.json();
-      })
-      .then(function (data) {
-          console.log('User Profile:', data);
-          localStorage.setItem('userData', JSON.stringify(data));
-          window.location.href = 'chat.html';
-      })
-      .catch(function (error) {
-          console.error('Error fetching user profile:', error);
-      });
-}
 
+function fetchUserProfile(token) {
+  fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token)
+    .then(response => response.json())
+    .then(data => {
+      console.log('User Profile:', data);
+      // Display user profile information on the page
+      localStorage.setItem('userData', JSON.stringify(data));
+
+    })
+    .catch(error => console.error('Error fetching user profile:', error));
+}
 
 window.onload = handleOAuthResponse;
