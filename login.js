@@ -28,3 +28,37 @@ function oauthSignIn() {
     document.body.appendChild(form);
     form.submit();
 }
+function fetchUserProfile(token) {
+    console.log('Access Token:', token);
+    fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token)
+        .then(function (response) {
+        console.log('Response Status:', response.status);
+        return response.json();
+    })
+        .then(function (data) {
+        console.log('User Profile:', data);
+        // Store user data in local storage
+        localStorage.setItem('userData', JSON.stringify(data));
+        // Redirect to chat page after storing the data
+        window.location.href = 'chat.html';
+    })
+        .catch(function (error) {
+        console.error('Error fetching user profile:', error);
+    });
+}
+function handleOAuthResponse() {
+    var hash = window.location.hash.substr(1);
+    var result = hash.split('&').reduce(function (res, item) {
+        var parts = item.split('=');
+        res[parts[0]] = decodeURIComponent(parts[1]);
+        return res;
+    }, {});
+    if (result.access_token) {
+        var token = result.access_token;
+        fetchUserProfile(token);
+    }
+    else {
+        console.error('Access token not found.');
+    }
+}
+window.onload = handleOAuthResponse;
