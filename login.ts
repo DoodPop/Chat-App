@@ -31,7 +31,7 @@ function oauthSignIn() {
 function fetchUserProfile(token) {
   console.log('Access Token:', token);
 
-  fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token)
+  fetch('https://www.googleapis.com/oauth2/v2/userinfo?alt=json&access_token=' + token)
       .then(function (response) {
           console.log('Response Status:', response.status);
           return response.json();
