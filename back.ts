@@ -35,6 +35,7 @@ function displayUserInformation(userData) {
     const imageElement = document.getElementById('image');
     const nameElement = document.querySelector('.name');
     const emailElement = document.getElementById('email');
+    var userData = JSON.parse(localStorage.getItem('userData'));
 
     if (userData) {
         imageElement.src = userData.picture;

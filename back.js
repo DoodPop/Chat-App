@@ -25,6 +25,7 @@ function displayUserInformation(userData) {
     var imageElement = document.getElementById('image');
     var nameElement = document.querySelector('.name');
     var emailElement = document.getElementById('email');
+    var userData = JSON.parse(localStorage.getItem('userData'));
     if (userData) {
         imageElement.src = userData.picture;
         nameElement.textContent = userData.name;
