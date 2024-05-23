@@ -29,24 +29,7 @@ refreshInput();
 
 
 
-function fetchUserProfile(token) {
-    console.log('Access Token:', token);
 
-    fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token)
-        .then(function (response) {
-            console.log('Response Status:', response.status);
-            return response.json();
-        })
-        .then(function (data) {
-            console.log('User Profile:', data);
-            // Store user data in local storage
-            localStorage.setItem('userData', JSON.stringify(data));
-            displayUserInformation(data);
-        })
-        .catch(function (error) {
-            console.error('Error fetching user profile:', error);
-        });
-}
 
 function displayUserInformation(userData) {
     const imageElement = document.getElementById('image');
@@ -62,27 +45,6 @@ function displayUserInformation(userData) {
     }
 }
 
-function handleOAuthResponse() {
-    var hash = window.location.hash.substr(1);
-    var result = hash.split('&').reduce(function (res, item) {
-        var parts = item.split('=');
-        res[parts[0]] = parts[1];
-        return res;
-    }, {});
-
-    if (result.access_token) {
-        var token = result.access_token;
-        fetchUserProfile(token);
-    } else {
-        const userDataString = localStorage.getItem('userData');
-        if (userDataString) {
-            const userData = JSON.parse(userDataString);
-            displayUserInformation(userData);
-        }
-    }
-}
-
-window.onload = handleOAuthResponse;
 
 
 window.onload = displayUserInformation;
