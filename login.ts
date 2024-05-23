@@ -46,19 +46,4 @@ function fetchUserProfile(token) {
       });
 }
 
-function handleOAuthResponse() {
-  var hash = window.location.hash.substr(1);
-  var result = hash.split('&').reduce(function (res, item) {
-      var parts = item.split('=');
-      res[parts[0]] = decodeURIComponent(parts[1]);
-      return res;
-  }, {});
 
-  if (result.access_token) {
-      fetchUserProfile(result.access_token);
-  } else {
-      console.error('Access token not found.');
-  }
-}
-
-window.onload = handleOAuthResponse;
