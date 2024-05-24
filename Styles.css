@@ -15,6 +15,7 @@ body {
     height: 90vh;
     position: relative;
     overflow-y: auto;
+    margin-left: 3rem;
 }
 .container {
     max-width: 600px;
@@ -64,13 +65,20 @@ border: 1px solid  rgb(20, 29, 43);;
     color: #fff;
     cursor: pointer;
 }
+img{
+    margin-left: 1.2rem;
+}
+.name{
+    margin-top: 2rem;
+    margin-left: 1.1rem;
+}
 .UI{
     border: solid 5px  rgb(38, 38, 51);
 
     border-radius: 5px;
     height: 100vh;
     position:absolute;
-    width: 6rem;
+    width: 9rem;
 background-color: rgb(38, 38, 51);
 
 }
@@ -82,7 +90,7 @@ background-color: rgb(38, 38, 51);
     
 }
 .chat-form{
-    margin-left: 6rem;
+    margin-left: 10rem;
 
 position: absolute;
 bottom: 0vh;
@@ -113,3 +121,22 @@ bottom: 0vh;
 .picture{
     border-radius: 10px;
 }
+.search{
+    margin-top: 0.1rem;
+    margin-left: 0.4rem;
+    padding: 5px 10px;
+    font-size: 16px;
+    color: white;
+    background-color: #596d81; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+  
+  .search:hover {
+    background-color: #0056b3; 
+    
+  }
