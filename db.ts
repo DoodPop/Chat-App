@@ -20,9 +20,9 @@ client.connect()
     };
 
     const query = {
-      text: 'INSERT INTO users(email, name) VALUES($1, $2)',
-      values: [userData.email, userData.name],
-    };
+        text: 'INSERT INTO users(user_name, user_gmail) VALUES($1, $2)',
+        values: [userData.name, userData.email],
+      };
 
     client.query(query)
       .then(() => {
