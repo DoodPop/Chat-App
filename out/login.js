@@ -28,30 +28,27 @@ function oauthSignIn() {
     document.body.appendChild(form);
     form.submit();
 }
-function fetchGoogleUserProfile(accessToken) {
-    fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
-        headers: {
-            'Authorization': `Bearer ${accessToken}`
-        }
-    })
+function handleOAuthResponse() {
+    var hash = window.location.hash.substr(1);
+    var result = hash.split('&').reduce(function (res, item) {
+        var parts = item.split('=');
+        res[parts[0]] = parts[1];
+        return res;
+    }, {});
+    if (result.access_token) {
+        var token = result.access_token;
+        fetchUserProfile(token);
+    }
+}
+function fetchUserProfile(token) {
+    fetch('https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=' + token)
         .then(response => response.json())
         .then(data => {
-        // Store user data in local storage
-        localStorage.setItem('data', JSON.stringify(data));
-        console.log('Stored user data:', data); // Log the stored user data for verification
-        displayUserProfile(data);
+        console.log('User Profile:', data);
+        // Display user profile information on the page
+        localStorage.setItem('userData', JSON.stringify(data));
     })
-        .catch(error => {
-        console.error('Error fetching user profile:', error);
-    });
+        .catch(error => console.error('Error fetching user profile:', error));
 }
-function displayUserProfile(data) {
-    // Optional: Display user profile on the login page
-    console.log('User profile data:', data);
-}
-function onSignIn(googleUser) {
-    const authResponse = googleUser.getAuthResponse();
-    const accessToken = authResponse.access_token;
-    fetchGoogleUserProfile(accessToken);
-}
+window.onload = handleOAuthResponse;
 //# sourceMappingURL=login.js.map
