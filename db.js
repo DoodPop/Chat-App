@@ -1,4 +1,4 @@
-import { Pool, Client } from 'pg';
+const { Pool, Client } = require('pg');
 
 const config = {
   user: 'avnadmin',
