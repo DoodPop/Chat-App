@@ -10,7 +10,7 @@ const userData = {
 
 axios.post('https://your-vercel-app-url/api/users', userData.name, userData.email)
   .then(response => {
-    console.log('User data pushed successfully:', response.data);
+    console.log('User data pushed successfully:', response.userData);
   })
   .catch(error => {
     console.error('Error pushing user data:', error);
