@@ -3,7 +3,7 @@ var userData = {
     name: 'John Doe',
     email: 'john@example.com',
 };
-axios.post('https://chat-app-tawny-seven.vercel.app/chat.html', userData)
+axios.post('https://servs.vercel.app/', userData)
     .then(function (response) {
     console.log('User data pushed successfully:', response.Data);
 })
