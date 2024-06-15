@@ -5,11 +5,19 @@
       "headers": [
         {
           "key": "Cross-Origin-Opener-Policy",
-          "value": "cross-origin-allow-popups" 
+          "value": "cross-origin-allow-popups"
         },
         {
           "key": "Cross-Origin-Embedder-Policy",
-          "value": "unsafe-none" 
+          "value": "unsafe-none"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
         }
       ]
     }
