@@ -1,5 +1,3 @@
-
-
 const axiosConfig = {
     method: 'POST',
     url: 'https://servs.vercel.app/',
