@@ -1,13 +1,18 @@
 const axios = require('axios');
-const userData = {
-    name: 'John Doe',
-    email: 'john@example.com',
+const userData = require('./back.js');
+const axiosConfig = {
+    method: 'POST',
+    url: 'https://servs.vercel.app/',
+    data: {
+        user_name: userData.name,
+        user_email: userData.email
+    }
 };
-axios.post('https://your-vercel-app-url/api/users', userData.name, userData.email)
-    .then(response => {
+axios(axiosConfig)
+    .then(function (response) {
     console.log('User data pushed successfully:', response.data);
 })
-    .catch(error => {
+    .catch(function (error) {
     console.error('Error pushing user data:', error);
 });
 //# sourceMappingURL=userinfo.js.map
