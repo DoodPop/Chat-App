@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const userData = require('./back.js');
+
 const axiosConfig = {
     method: 'POST',
     url: 'https://servs.vercel.app/',
