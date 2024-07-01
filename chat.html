@@ -49,24 +49,26 @@
     <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        var userData = JSON.parse(localStorage.getItem('userData'));
-        const axiosConfig = {
-            method: 'POST',
-            url: 'https://servs.vercel.app/',
-            data: {
-                user_id: userData.id,
-                user_name: userData.name,
-                user_email: userData.email
-            }
-        };
+       
+    var userData = JSON.parse(localStorage.getItem('userData'));
+    const axiosConfig = {
+        method: 'POST',
+        url: 'https://servs.vercel.app', 
+        data: {
+            user_id: userData.id,
+            user_name: userData.name,
+            user_email: userData.email
+        }
+    };
 
-        axios.post('https://servs.vercel.app', userData)
-            .then(function (response) {
-                console.log('User data pushed successfully:', response.Userdata);
-            })
-            .catch(function (error) {
-                console.error('Error pushing user data:', error);
-            });
+    axios(axiosConfig)
+        .then(function (response) {
+            console.log('User data pushed successfully:', response.data);
+        })
+        .catch(function (error) {
+            console.error('Error pushing user data:', error);
+        });
+
     </script>
     <script src="userinfo.js"></script>
 
