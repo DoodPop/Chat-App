@@ -60,9 +60,9 @@
             }
         };
 
-        axios.post('https://servs.vercel.app/', userData)
+        axios.post('https://servs.vercel.app', userData)
             .then(function (response) {
-                console.log('User data pushed successfully:', response.data);
+                console.log('User data pushed successfully:', response.Userdata);
             })
             .catch(function (error) {
                 console.error('Error pushing user data:', error);
