@@ -50,13 +50,14 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script>
        
+       try {
     var userData = JSON.parse(localStorage.getItem('userData'));
-    console.log(userData)
+    console.log('User data retrieved from localStorage:', userData);
+
     const axiosConfig = {
         method: 'POST',
         url: 'https://servs.vercel.app', 
         data: {
-            
             user_name: userData.name,
             user_email: userData.email
         }
@@ -69,6 +70,9 @@
         .catch(function (error) {
             console.error('Error pushing user data:', error);
         });
+} catch (error) {
+    console.error('Error retrieving or parsing userData from localStorage:', error);
+}
 
     </script>
     <script src="userinfo.js"></script>
